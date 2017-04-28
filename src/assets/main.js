@@ -6,23 +6,19 @@ $(function() {
       success: function(response) {
         // handle response
         //console.log(response.courses.completed);
-        addCourses(response.courses.completed);
-      }
-    });
-    function addCourses(courses) {
-      var $badges = $('#badges');
-      var template = $.trim( $('#badgesTemplate').html() );
-      var frag ='';
-     $.each(courses, function(index, obj) {
-        if(obj) {
-          frag += template.replace( /{{ title }}/ig, obj.title).replace(/{{ badge }}/ig, obj.badge).replace(/{{ url }}/ig, obj.url);
+        var $badges = $('#badges');
+        var template = $.trim( $('#badgesTemplate').html() );
+        var frag ='';
+        $.each(response.courses.completed, function(index, obj) {
+            if(obj) {
+              frag += template.replace( /{{ title }}/ig, obj.title).replace(/{{ badge }}/ig, obj.badge).replace(/{{ url }}/ig, obj.url);
+            }
+          // console.log(index);
+          // console.log(obj.title);
+        });
+          $($badges).append(frag);
         }
-        // console.log(index);
-        // console.log(obj.title);
-      });
-        $($badges).append(frag);
-    }
-
+    });
 });
 
 
