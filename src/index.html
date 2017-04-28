@@ -11,7 +11,18 @@
 
   <div class="container">
     <h1>jQuery Badges</h1>
-    <div id="badges"></div>
+    <div id="badges">
+
+    <script id="badgesTemplate" type="javascript/template">
+
+      <div class="course">
+        <h3>{{ title }}</h3>
+        <img src="{{ badge }}" alt="{{ title }}">
+        <a class="btn btn-primary" target="_blank" href="{{ url }}" title="{{ title }}">See Course</a>    
+      </div>
+    
+    </script>
+    </div>
   </div>
 
 
